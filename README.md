@@ -1,340 +1,169 @@
-# Social Mood Matcher – AI Caption & Hashtag Generator
+# 🎭 Social Mood Matcher
 
-<div align="center">
+**AI-Powered Image Sentiment & Social Caption Generator**
 
-![Social Mood Matcher](https://img.shields.io/badge/AI-Powered-blue)
-![Python](https://img.shields.io/badge/Python-3.10+-green)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.31-red)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+Social Mood Matcher is an intelligent web application that analyzes the **visual mood of an uploaded image** and automatically generates **engaging social media captions and hashtags**.
 
-**Production-ready Streamlit application for generating AI-powered social media captions with sentiment detection and trending hashtags.**
-
-[Features](#features) • [Installation](#installation) • [Usage](#usage) • [Architecture](#architecture) • [Deployment](#deployment)
-
-</div>
+The system uses Artificial Intelligence to understand the **context, sentiment, and category** of an image and produces captions suitable for platforms like **Twitter, Instagram, and Facebook**.
 
 ---
 
-## 🎯 Overview
+# 👨‍💻 Authors
 
-**Social Mood Matcher** is an end-to-end AI application that analyzes images (scenery or food), detects their sentiment/vibe, and generates engaging social media captions with trending 2024 hashtags. The application ensures all output fits within platform character limits (Twitter/X, Instagram, Facebook).
-
-### Key Features
-
-- 🎭 **Image Sentiment Detection** - Analyzes images to infer mood (cozy, happy, aesthetic, calm, luxury, adventurous, etc.)
-- ✍️ **Smart Caption Generation** - Creates engaging captions in multiple styles (casual, aesthetic, professional, playful)
-- #️⃣ **Trending Hashtag Engine** - Curated 2024 hashtags organized by category and sentiment
-- 📏 **Character Limiting** - Smart truncation for Twitter/X (280 chars), Instagram, and Facebook
-- 🎨 **Beautiful UI** - Modern, responsive Streamlit interface
-- 🚀 **Production Ready** - Modular architecture, error handling, and deployment-ready
+* **Pranav M S Krishnan**
+* **Ganesh R**
+* **Makesh P**
+* **Santhosh R**
 
 ---
 
-## 📸 Screenshots
+# 🚀 Features
 
-### Main Interface
-![Main Interface](assets/screenshot_main.png)
+### 📷 Image Mood Detection
 
-### Results Display
-![Results](assets/screenshot_results.png)
+Analyzes uploaded images to detect the **sentiment and vibe** of the scene.
+
+### ✍️ AI Caption Generation
+
+Automatically generates **creative captions** tailored to the detected mood.
+
+### #️⃣ Smart Hashtag Suggestions
+
+Suggests **relevant and trending hashtags** based on image content.
+
+### 📊 Sentiment Visualization
+
+Displays detected sentiment along with **confidence score**.
+
+### 🎯 Platform Optimization
+
+Ensures captions fit within **platform-specific character limits**.
+
+### 🧠 Gemini AI Integration
+
+Supports **Google Gemini API** for advanced image understanding.
+
+### 🔧 Offline Mode
+
+Uses **BLIP and NLP models locally** when Gemini API is not enabled.
+
+### 📜 Caption History
+
+Stores previously generated captions for easy reference.
 
 ---
 
-## 🏗️ Architecture
+# 🧠 Technologies Used
 
-```mermaid
-graph TD
-    A[User Uploads Image] --> B[Image Validation]
-    B --> C[Image Sentiment Detection]
-    C --> D[BLIP Image Captioning]
-    D --> E[Sentiment Analysis]
-    E --> F[Caption Generation]
-    E --> G[Hashtag Engine]
-    F --> H[Character Limiter]
-    G --> H
-    H --> I[Final Output]
-    I --> J[Display to User]
+| Technology                    | Purpose                         |
+| ----------------------------- | ------------------------------- |
+| **Python**                    | Core programming language       |
+| **Streamlit**                 | Interactive web interface       |
+| **Google Gemini API**         | Advanced AI image understanding |
+| **BLIP Model**                | Image captioning (local AI)     |
+| **DistilBERT / NLP Models**   | Sentiment detection             |
+| **Hugging Face Transformers** | AI model framework              |
+| **Pillow (PIL)**              | Image processing                |
+
+---
+
+# ⚙️ Installation
+
+### 1️⃣ Clone the Repository
+
 ```
-
-### Project Structure
-
-```
-social-mood-matcher/
-│
-├── app.py                      # Main Streamlit application
-├── requirements.txt            # Python dependencies
-├── README.md                   # This file
-├── .env.example               # Environment template
-│
-├── config/
-│   └── settings.py            # Centralized configuration
-│
-├── services/
-│   ├── image_sentiment.py     # Sentiment detection service
-│   ├── caption_generator.py   # Caption generation service
-│   ├── hashtag_engine.py      # Hashtag recommendation engine
-│   └── character_limiter.py   # Character limiting service
-│
-├── utils/
-│   ├── image_utils.py         # Image processing utilities
-│   └── text_utils.py          # Text processing utilities
-│
-├── assets/
-│   └── sample_images/         # Sample test images
-│
-└── tests/
-    └── test_pipeline.py       # Test suite
+git clone https://github.com/yourusername/social-mood-matcher.git
+cd social-mood-matcher
 ```
 
 ---
 
-## 🚀 Installation
+### 2️⃣ Create Virtual Environment (Optional)
 
-### Prerequisites
-
-- Python 3.10 or higher
-- pip package manager
-- 4GB+ RAM (for AI models)
-
-### Step 1: Clone or Download
-
-```bash
-cd "c:\Users\prana\OneDrive\Desktop\Kitchen Vision"
 ```
-
-### Step 2: Create Virtual Environment (Recommended)
-
-```bash
 python -m venv venv
+```
 
-# Windows
+Activate:
+
+**Windows**
+
+```
 venv\Scripts\activate
+```
 
-# Linux/Mac
+**Mac/Linux**
+
+```
 source venv/bin/activate
 ```
 
-### Step 3: Install Dependencies
+---
 
-```bash
+### 3️⃣ Install Dependencies
+
+```
 pip install -r requirements.txt
 ```
 
-**Note:** First-time installation will download AI models (~2GB). This is a one-time process.
+---
 
-### Step 4: Configure Environment (Optional)
+# 🔑 Gemini API Setup (Optional)
 
-```bash
-copy .env.example .env
-# Edit .env if you want to customize settings
+To enable advanced AI analysis:
+
+1. Get a **Gemini API Key** from Google AI Studio
+2. Create a `.env` file in the project root
+
 ```
+GEMINI_API_KEY=your_api_key_here
+```
+
+If not provided, the app automatically uses **local AI models**.
 
 ---
 
-## 💻 Usage
+# ▶️ Running the Application
 
-### Running the Application
+Start the Streamlit app:
 
-```bash
+```
 streamlit run app.py
 ```
 
-The application will open in your default browser at `http://localhost:8501`
+Open the browser at:
 
-### Using the Application
-
-1. **Upload Image** - Click "Browse files" and select an image (JPG, PNG, WEBP)
-2. **Configure Settings** - Choose caption style, platform, and number of hashtags in the sidebar
-3. **Generate** - Click "🚀 Generate Caption & Hashtags"
-4. **Copy & Share** - Copy the generated content and paste it on your social media!
-
-### Caption Styles
-
-- **Casual** - Friendly and relaxed tone with moderate emoji usage
-- **Aesthetic** - Artistic and poetic with minimal emojis
-- **Professional** - Polished and informative with no emojis
-- **Playful** - Fun and energetic with high emoji usage
-
-### Supported Platforms
-
-- **Twitter/X** - 280 character limit
-- **Instagram** - 2,200 character limit
-- **Facebook** - 63,206 character limit
-
----
-
-## 🧠 AI Models
-
-The application uses the following Hugging Face models:
-
-| Component | Model | Purpose |
-|-----------|-------|---------|
-| Image Captioning | Salesforce/blip-image-captioning-base | Understand image content |
-| Sentiment Analysis | distilbert-base-uncased-finetuned-sst-2-english | Detect sentiment |
-| Caption Templates | Custom template system | Generate engaging captions |
-
-**All models run locally** - no API keys required!
-
----
-
-## 🧪 Testing
-
-Run the test suite:
-
-```bash
-pytest tests/test_pipeline.py -v
 ```
-
-Run with coverage:
-
-```bash
-pytest tests/test_pipeline.py --cov=. --cov-report=html
+http://localhost:8501
 ```
 
 ---
 
-## 🌐 Deployment
+# 📸 How It Works
 
-### Streamlit Cloud (Recommended)
-
-1. Push your code to GitHub
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Connect your repository
-4. Deploy!
-
-### Docker Deployment
-
-Create a `Dockerfile`:
-
-```dockerfile
-FROM python:3.10-slim
-
-WORKDIR /app
-
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-EXPOSE 8501
-
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
-```
-
-Build and run:
-
-```bash
-docker build -t social-mood-matcher .
-docker run -p 8501:8501 social-mood-matcher
-```
-
-### AWS/GCP/Azure
-
-The application can be deployed on any cloud platform that supports Python and Streamlit. See [Streamlit deployment docs](https://docs.streamlit.io/streamlit-community-cloud/get-started/deploy-an-app) for detailed guides.
+1. Upload an image
+2. AI detects the **sentiment and category**
+3. The system generates a **caption** based on the detected mood
+4. Relevant **hashtags** are suggested
+5. Character limits are enforced for the selected platform
 
 ---
 
-## ⚙️ Configuration
+# 🎬 Demo
 
-### Environment Variables
-
-Create a `.env` file from `.env.example`:
-
-```bash
-# Debug Settings
-DEBUG=False
-LOG_LEVEL=INFO
-
-# Model Cache Directory
-MODEL_CACHE_DIR=./models_cache
-
-# Optional API Keys (for future features)
-# OPENAI_API_KEY=your_key_here
-# HUGGINGFACE_API_KEY=your_key_here
-```
-
-### Customizing Settings
-
-Edit `config/settings.py` to customize:
-
-- Model configurations
-- Character limits
-- Hashtag counts
-- UI settings
-- Sentiment categories
-- Caption styles
+Upload an image and click **Generate Caption & Hashtags** to see AI-powered results instantly.
 
 ---
 
-## 📊 Performance
+# 📜 License
 
-- **First Run:** ~30-60 seconds (model loading)
-- **Subsequent Runs:** ~3-5 seconds per image
-- **Model Size:** ~2GB (cached locally)
-- **Memory Usage:** ~2-4GB RAM
-
-**Optimization Tips:**
-- Use GPU if available (change `device` in `config/settings.py`)
-- Enable caching (enabled by default)
-- Reduce image size before upload
+This project is developed for **educational and academic purposes**.
 
 ---
 
-## 🔮 Future Enhancements
+# ❤️ Acknowledgements
 
-- [ ] Multiple caption variants with A/B testing
-- [ ] Download caption as .txt file
-- [ ] Light/Dark UI mode toggle
-- [ ] Real-time trending hashtag API integration
-- [ ] Multi-language support
-- [ ] Batch processing for multiple images
-- [ ] Custom hashtag suggestions
-- [ ] Analytics dashboard
-- [ ] Social media direct posting
-- [ ] Video support
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-## 🙏 Acknowledgments
-
-- [Hugging Face](https://huggingface.co/) for amazing AI models
-- [Streamlit](https://streamlit.io/) for the beautiful framework
-- [Salesforce](https://github.com/salesforce/BLIP) for BLIP model
-- The open-source community
-
----
-
-## 📧 Contact
-
-For questions, suggestions, or issues:
-
-- **GitHub Issues:** [Create an issue](https://github.com/yourusername/social-mood-matcher/issues)
-- **Email:** your.email@example.com
-
----
-
-<div align="center">
-
-**Made with ❤️ using Streamlit & Hugging Face Transformers**
-
-⭐ Star this repo if you find it helpful!
-
-</div>
+* Streamlit
+* Hugging Face Transformers
+* Google Gemini API
+* BLIP Image Captioning Model
