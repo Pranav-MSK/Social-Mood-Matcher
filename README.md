@@ -17,6 +17,12 @@ The system uses Artificial Intelligence to understand the **context, sentiment, 
 
 ---
 
+# 📃 Project Documentation
+
+[Social Mood Matcher Project Documentation.docx](https://github.com/Pranav-MSK/Social-Mood-Matcher/blob/48d99420a0dcc6c2cf0c677dbc54dbe444441e18/Social%20Mood%20Matcher%20Project%20Documentation.docx)
+
+---
+
 # 🚀 Features
 
 ### 📷 Image Mood Detection
@@ -146,18 +152,6 @@ http://localhost:8501
 3. The system generates a **caption** based on the detected mood
 4. Relevant **hashtags** are suggested
 5. Character limits are enforced for the selected platform
-
----
-
-# 🎬 Demo
-
-Upload an image and click **Generate Caption & Hashtags** to see AI-powered results instantly.
-
----
-
-# 📜 License
-
-This project is developed for **educational and academic purposes**.
 
 ---
 
